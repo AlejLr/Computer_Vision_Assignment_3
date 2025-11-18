@@ -1,3 +1,59 @@
+
+# --------------------------------------
+# Project Specific .gitignore
+# --------------------------------------
+
+data/raw/
+data/processed/
+
+**/frames/
+**/videos/
+**/*.mp4
+**/*.avi
+**/*.mov
+**/*.mkv
+**/*.gif
+
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+experiments/
+runs/
+logs/
+**/logs.txt
+**/metrics.json
+**/events.out.tfevents.*
+
+*.pth
+*.pt
+*.ckpt
+*.onnx
+
+*.png
+*.jpg
+*.jpeg
+*.bmp
+*.tiff
+*.svg
+*.npy
+
+.cache/
+**/__pycache__/
+tmp/
+temp/
+
+.vscode/
+.idea/
+
+*.env
+*.venv
+
+*.notebook_cache/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -5,6 +61,10 @@ __pycache__/
 
 # C extensions
 *.so
+
+# Data
+*.zip
+*.tar.gz
 
 # Distribution / packaging
 .Python
