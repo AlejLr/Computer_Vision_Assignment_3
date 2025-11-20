@@ -56,8 +56,8 @@ def create_data_loaders(data_root, train_csv, val_csv, labels_csv, batch_size, n
     )
     
     # In case of quick tests
-    train_set = subset_dataset(train_set, max_train_samples)
-    val_set = subset_dataset(val_set, max_val_samples)
+    #train_set = subset_dataset(train_set, max_train_samples)
+    #val_set = subset_dataset(val_set, max_val_samples)
     
     num_classes = len(train_set.labels_names)
     
