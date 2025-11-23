@@ -14,7 +14,7 @@ if REPO_ROOT not in sys.path:
 
 from src.data.dataset import JesterDataset
 from src.data.transforms import get_train_transforms, get_val_transforms
-from src.models.baseline_cnn import create_baseline_model
+from src.models.temporal_model import TemporalModel
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Train Baseline CNN on Jester Dataset')
@@ -22,11 +22,11 @@ def parse_args():
     parser.add_argument('--train_csv', type=str, required=True, help="Path to the train CSV file")
     parser.add_argument('--val_csv', type=str, required=True, help="Path to the validation CSV file")
     parser.add_argument('--labels_csv', type=str, required=True, help="Path to the labels CSV file")
-    parser.add_argument('--batch_size', type=int, default=32)
+    parser.add_argument('--batch_size', type=int, default=8)
     parser.add_argument('--epochs', type=int, default=5)
-    parser.add_argument('--lr', type=float, default=1e-3)
+    parser.add_argument('--lr', type=float, default=3e-4)
     parser.add_argument('--num_workers', type=int, default=4)
-    parser.add_argument('--save_dir', type=str, default="experiments/baseline_model", help="Directory to save checkpoints and logs")
+    parser.add_argument('--save_dir', type=str, default="experiments/temporal_model", help="Directory to save checkpoints and logs")
     parser.add_argument('--max_train_samples', type=int, default=None, help="Optional: limit number of training samples (for quick local tests).")
     parser.add_argument('--max_val_samples', type=int, default=None, help="Optional: limit number of validation samples (for quick local tests).")
     args = parser.parse_args()
@@ -165,7 +165,14 @@ def main():
         max_val_samples=args.max_val_samples
     )
     
-    model = create_baseline_model(num_classes=num_classes, device=device)
+    model = TemporalModel(
+        num_classes=num_classes,
+        num_frames=8,
+        pretrained_backbone=True,
+        hidden_size=512,
+        num_layers=1,
+    ).to(device)
+    
     criterion = nn.CrossEntropyLoss()
     optimizer = Adam(model.parameters(), lr=args.lr)
     
