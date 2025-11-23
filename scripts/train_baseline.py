@@ -46,13 +46,19 @@ def create_data_loaders(data_root, train_csv, val_csv, labels_csv, batch_size, n
         data_root=data_root,
         csv_path=train_csv,
         labels_csv_path=labels_csv,
-        transform=get_train_transforms(224)
+        num_frames=1,
+        temporal=False,
+        transform=get_train_transforms(224),
+        is_train=True,
     )
     val_set = JesterDataset(
         data_root=data_root,
         csv_path=val_csv,
         labels_csv_path=labels_csv,
-        transform=get_val_transforms(224)
+        num_frames=1,
+        temporal=False,
+        transform=get_val_transforms(224),
+        is_train=False,
     )
     
     # In case of quick tests
