@@ -15,4 +15,9 @@ python scripts/eval_model.py --data_root data\raw\small-20bn-jester-v1 --val_csv
 --> evaluate temporal model:
 python scripts/eval_model.py --data_root data\raw\small-20bn-jester-v1 --val_csv data\raw\jester-v1-validation.csv --labels_csv data\raw\jester-v1-labels.csv --model_type temporal --ckpt_path experiments\temporal_model\model_best.pth --batch_size 4 --num_frames 8 --save_dir experiments\eval
 
+--> Baseline Grad-CAM examples:
+python scripts/make_gradcam_examples.py
+
+--> Temporal Grad-CAM examples:
+python scripts/make_gradcam_temporal_examples.py
 """
