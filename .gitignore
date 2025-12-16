@@ -20,7 +20,8 @@ data/processed/
 *.rar
 *.7z
 
-experiments/
+experiments/baseline_model/
+experiments/temporal_model/
 runs/
 logs/
 **/logs.txt
@@ -32,7 +33,6 @@ logs/
 *.ckpt
 *.onnx
 
-*.png
 *.jpg
 *.jpeg
 *.bmp
